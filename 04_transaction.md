@@ -327,6 +327,11 @@ MessageTypeは以下の通りです。
 ```js
 {0: 'PlainMessage', 1: 'EncryptedMessage', 254: 'PersistentHarvestingDelegationMessage', -1: 'RawMessage'}
 ```
+
+PersistentHarvestingDelegationMessageについて
+
+* [symbol-sdkソースコードのクラス構造概観](https://yu-kimura.jp/2020/12/11/symbol-sdk/)
+
 ## 4.6 アグリゲートトランザクション
 
 Symbolでは複数のトランザクションを1ブロックにまとめてアナウンスすることができます。
