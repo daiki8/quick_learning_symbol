@@ -51,7 +51,7 @@ console.log(childNamespaceRentalFee);
 tx = sym.NamespaceRegistrationTransaction.createRootNamespace(
     sym.Deadline.create(epochAdjustment),
     "xembook",
-    sym.UInt64.fromUint(86400),
+    sym.UInt64.fromUint(86400),  // 期間(秒単位で指定?)
     networkType
 ).setMaxFee(100);
 signedTx = alice.sign(tx,generationHash);
