@@ -51,6 +51,8 @@ signedAggregateTx = alice.sign(aggregateTx, generationHash);
 
 ### ハッシュロックトランザクションの作成と署名、アナウンス
 ```js
+networkCurrency = (await repo.getCurrencies().toPromise()).currency;
+
 //ハッシュロックTX作成
 hashLockTx = sym.HashLockTransaction.create(
   sym.Deadline.create(epochAdjustment),
@@ -71,15 +73,27 @@ txRepo.announce(signedLockTx);
 
 エクスプローラーなどで確認した後、ボンデッドトランザクションをネットワークにアナウンスします。
 ```js
-txRepo.announceAggregateBonded(signedTx);
+txRepo.announceAggregateBonded(signedAggregateTx);
 ```
 
+### (個人的なメモ)アナウンスされたアグリゲートボンデッドトランザクション情報を取得
+```js
+// Aliceによりアナウンスされたボンデッドトランザクションを取得するスクリプトの一例
+result = await txRepo.search(
+  {
+    group: sym.TransactionGroup.Partial,
+    address:alice.address,
+    pageNumber: 1
+  }
+).toPromise();
+announcedTxByAlice = result.data[0];
+```
 
 ### 連署
 ロックされたトランザクションを指定されたアカウント(Bob)で連署します。
 
 ```js
-cosignatureTx = sym.CosignatureTransaction.create(aggregateTx);
+cosignatureTx = sym.CosignatureTransaction.create(announcedTxByAlice);
 signedCosTx = bob.signCosignatureTransaction(cosignatureTx);
 await txRepo.announceAggregateBondedCosignature(signedCosTx).toPromise();
 ```
