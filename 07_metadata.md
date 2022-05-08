@@ -200,4 +200,4 @@ sym.MetadataType
 メタデータを活用することで、大学は学生の所有するアカウントにメタデータを発行することができ、
 企業は大学の公開鍵と学生のモザイク(アカウント)所有証明でメタデータに記載された卒業証明を検証することができます。
 
-
+* [DIDについて](https://mirror.xyz/0xb69CB3EFbaDB1b30f6d88020e1FA1FC84B8804d4/kpNJ3waDn3ivINkCQ84WVR8gKP5FYTmT1hsetI-EoEk)
